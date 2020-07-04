@@ -1,2 +1,5 @@
 node_modules/
 public/dist/
+.env.local
+.env.developpement
+.env.test
