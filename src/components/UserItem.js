@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, Button} from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 const UserItem = ({user:{id, login, avatar_url, html_url}}) => {
         return (
             <div className='col text-center mt-2'>
@@ -8,7 +8,7 @@ const UserItem = ({user:{id, login, avatar_url, html_url}}) => {
                     <Card.Img variant="top" className="rounded-circle" alt="Profile's Avatar" src={avatar_url} />
                     <Card.Body>
                         <Card.Title className ='font-weight-bold'>{login}</Card.Title>
-                        <a className='btn btn-sm btn-dark text-light' variant="primary">More</a>
+                        <Link to={`/user/${login}`} className='btn btn-sm btn-dark text-light' variant="primary">More</Link>
                     </Card.Body>
                 </Card>
             </div>

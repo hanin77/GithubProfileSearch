@@ -7,6 +7,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: {},
             users: [],
             textSearch: 'hanin',
             searchOrNot: false,
@@ -19,13 +20,16 @@ class Home extends React.Component {
         this.setState(() => ({textSearch, searchOrNot: false}));
         
     }
-
-    onSubmitForm = (e) => {
-        e.preventDefault();
-
+    getUesrs = () => {
         axios.get(`https://api.github.com/search/users?q=${this.state.textSearch}&client_id=${process.env.REACT_APP_GITHUB_ID}&client_secret=${process.env.REACT_APP_GITHUB_SECRET}`).then((result)=> {
             this.setState((prevState) => ({searchOrNot: true, users: [...result.data.items]}));
         });
+    }
+    
+    onSubmitForm = (e) => {
+        e.preventDefault();
+        this.getUesrs();
+        
        
     }
 
